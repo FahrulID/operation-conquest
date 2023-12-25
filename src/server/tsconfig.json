@@ -1,0 +1,19 @@
+{
+    "extends": "../../tsconfig.setting.json",
+    "include": [
+        "./**/*.ts"
+    ],
+    "compilerOptions": {
+        "outDir": "../../build/",
+        "rootDir": "./",
+        "module": "commonjs",
+        "target": "ES2017",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "baseUrl": "./",
+    }
+}

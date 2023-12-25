@@ -4,9 +4,12 @@
     "description": "Online Multiplayer War Game",
     "main": "src/game.ts",
     "scripts": {
-        "dev": "rollup --config rollup.config.dev.mjs",
-        "build": "rollup --config rollup.config.dist.mjs",
-        "watch": "rollup --watch --config rollup.config.dev.mjs"
+        "client:dev": "rollup --config rollup.config.dev.mjs",
+        "client:build": "rollup --config rollup.config.dist.mjs",
+        "client:watch": "rollup --watch --config rollup.config.dev.mjs",
+        "server:dev": "tsc --build src/server && node build/server.js",
+        "server:watch": "tsc --build --watch src/server && nodemon build/server.js",
+        "server:build": "tsc --build src/server"
     },
     "repository": {
         "type": "git",
@@ -24,9 +27,15 @@
         "@rollup/plugin-replace": "^5.0.2",
         "@rollup/plugin-terser": "^0.4.0",
         "@rollup/plugin-typescript": "^11.1.0",
+        "nodemon": "^3.0.2",
         "phaser": "^3.60.0",
         "rollup": "^3.20.2",
         "rollup-plugin-serve": "^2.0.2",
         "typescript": "^5.0.3"
+    },
+    "dependencies": {
+        "fastify": "^4.25.2",
+        "fastify-socket.io": "^5.0.0",
+        "socket.io": "^4.7.2"
     }
 }
