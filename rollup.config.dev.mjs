@@ -3,6 +3,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import serve from 'rollup-plugin-serve';
 import typescript from '@rollup/plugin-typescript';
+import resolve from "@rollup/plugin-node-resolve";
 
 export default {
 
@@ -24,6 +25,10 @@ export default {
 
     plugins: [
 
+        resolve({
+            preferBuiltins: true,
+        }),
+
         //  Toggle the booleans here to enable / disable Phaser 3 features:
         replace({
             preventAssignment: true,
@@ -38,14 +43,14 @@ export default {
 
         //  Parse our .ts source files
         nodeResolve({
-            extensions: ['.ts', '.tsx']
+            extensions: ['.ts', '.tsx', '.js']
         }),
 
         //  We need to convert the Phaser 3 CJS modules into a format Rollup can use:
         commonjs({
             include: [
                 'node_modules/eventemitter3/**',
-                'node_modules/phaser/**'
+                'node_modules/phaser/**',
             ],
             exclude: [
                 'node_modules/phaser/src/polyfills/requestAnimationFrame.js',

@@ -1,7 +1,8 @@
 import Scenes from './scenes/scenes';
 import * as Phaser from 'phaser';
+import Plugins from './plugins/plugin';
 
-var Config = (function (width, height) {
+var Config = (function (width: number, height: number) {
     return {
         type: Phaser.AUTO,
         scale: {
@@ -20,7 +21,8 @@ var Config = (function (width, height) {
             forceSetTimeOut: true
         },
         backgroundColor: '#000000',
-        scene: Scenes
+        scene: Scenes,
+        plugins: Plugins
     };
 })
 

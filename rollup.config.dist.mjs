@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import resolve from "@rollup/plugin-node-resolve";
 
 export default {
 
@@ -24,6 +25,10 @@ export default {
 
     plugins: [
 
+        resolve({
+            preferBuiltins: true,
+        }),
+
         //  Toggle the booleans here to enable / disable Phaser 3 features:
         replace({
             preventAssignment: true,
@@ -38,7 +43,7 @@ export default {
 
         //  Parse our .ts source files
         nodeResolve({
-            extensions: ['.ts', '.tsx']
+            extensions: ['.ts', '.tsx', '.js']
         }),
 
         //  We need to convert the Phaser 3 CJS modules into a format Rollup can use:
@@ -60,6 +65,5 @@ export default {
 
         //  See https://github.com/rollup/plugins/tree/master/packages/terser for config options
         terser()
-
     ]
 };
