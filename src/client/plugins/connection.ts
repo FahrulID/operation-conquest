@@ -1,17 +1,7 @@
 import { Plugins } from "phaser";
 const { BasePlugin } = Plugins;
 import { io, Socket } from "./socket.io/socket.io.esm.min.js"
-
-interface ServerToClientEvents {
-    noArg: () => void;
-    basicEmit: (a: number, b: string, c: Buffer) => void;
-    withAck: (d: string, callback: (e: number) => void) => void;
-}
-
-interface ClientToServerEvents {
-    hello: () => void;
-    connect: () => void;
-}
+import { ClientToServerEvents, ServerToClientEvents } from "../../global/interfaces/connection.interface";
 
 const serverURL = "http://localhost:3000";
 

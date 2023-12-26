@@ -8,6 +8,7 @@ Thumbs.db
 
 # Vendors
 node_modules/
+src/server/generated/**/*
 
 # Build
 /npm-debug.log
@@ -15,3 +16,9 @@ node_modules/
 /dist/*.map
 /build/*.js
 /build/*.map
+/build/**/*.js
+/build/**/*.map
+/build/generated/**/*
+
+# Environment File
+.env

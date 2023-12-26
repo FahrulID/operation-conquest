@@ -1,11 +1,13 @@
 import fastify, { FastifyReply, FastifyRequest } from "fastify";
 import * as socketIO from "socket.io";
 import fastifysocketIO from "fastify-socket.io";
+import Routes from "./routes";
 
 class App {
     private server: any;
     private port: number;
     private io!: socketIO.Server;
+    private routes: Routes | undefined;
 
     constructor(port: number) {
         this.port = port;
@@ -16,17 +18,15 @@ class App {
             cors: { origin: "*" }
         }));
 
-        this.server.get("/", (request: FastifyRequest, reply: FastifyReply) => {
-            this.server.io.emit("hello");
-        });
+        // this.server.get("/", (request: FastifyRequest, reply: FastifyReply) => {
+        //     this.server.io.emit("hello");
+        // });
 
         this.server.ready((err: any) => {
             if (err) { throw err }
             this.io = this.server.io;
 
-            this.io.on('connect', (socket: socketIO.Socket) => {
-                return console.info('Socket connected!', socket.id);
-            })
+            this.routes = new Routes(this.io);
         });
     }
 
