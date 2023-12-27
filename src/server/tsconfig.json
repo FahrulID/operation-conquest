@@ -5,7 +5,10 @@
     ],
     "compilerOptions": {
         "outDir": "../../build/",
-        "rootDir": "./",
+        "rootDirs": [
+            "./",
+            "../global/"
+        ],
         "module": "commonjs",
         "target": "ES2017",
         "esModuleInterop": true,

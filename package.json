@@ -7,9 +7,10 @@
         "client:dev": "rollup --config rollup.config.dev.mjs",
         "client:watch": "rollup --watch --config rollup.config.dev.mjs",
         "client:build": "rollup --config rollup.config.dist.mjs",
-        "server:dev": "tsc --build src/server && shx cp -r ./src/server/generated/ ./build/generated/ && node build/server.js",
-        "server:watch": "tsc --build --watch src/server && shx cp -r ./src/server/generated/ ./build/generated/ && nodemon build/server.js",
-        "server:build": "tsc --build src/server && shx cp -r ./src/server/generated/ ./build/generated/"
+        "server:dev": "tsc --build src/server && shx cp -r ./src/server/generated/ ./build/server/generated/",
+        "server:watch": "tsc --build --watch src/server && shx cp -r ./src/server/generated/ ./build/server/generated/",
+        "server:build": "tsc --build src/server && shx cp -r ./src/server/generated/ ./build/server/generated/",
+        "server:start": "npx nodemon ./build/server/server.js"
     },
     "repository": {
         "type": "git",
@@ -36,6 +37,7 @@
     },
     "dependencies": {
         "@prisma/client": "^5.7.1",
+        "argon2": "^0.31.2",
         "fastify": "^4.25.2",
         "fastify-socket.io": "^5.0.0",
         "socket.io": "^4.7.2"

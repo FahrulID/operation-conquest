@@ -1,13 +1,13 @@
 import * as socketIO from "socket.io";
 import fastifysocketIO from "fastify-socket.io";
-import { PrismaClient } from './generated/client'
+import AuthService from "./services/auth";
+import { authentication, usernameCheck } from "../global/types/types";
 
 class Routes {
     private io!: socketIO.Server;
-    private prisma: PrismaClient;
+    private authService: AuthService = new AuthService();
 
     constructor(io: socketIO.Server) {
-        this.prisma = new PrismaClient();
         this.io = io;
         this.routes();
     }
@@ -22,6 +22,13 @@ class Routes {
 
             socket.on('hello', () => {
                 console.info('hello');
+            });
+
+            socket.on('login', async (data: authentication | usernameCheck) => {
+                // check username
+                let response = await this.authService.checkUsername(data);
+
+                console.log(response);
             });
         });
     }

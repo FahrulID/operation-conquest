@@ -14,11 +14,7 @@ src/server/generated/**/*
 /npm-debug.log
 /dist/*.js
 /dist/*.map
-/build/*.js
-/build/*.map
-/build/**/*.js
-/build/**/*.map
-/build/generated/**/*
+/build/**/*
 
 # Environment File
 .env

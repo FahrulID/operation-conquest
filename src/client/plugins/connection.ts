@@ -17,6 +17,8 @@ export class ConnectionPlugin extends BasePlugin {
 
         this.on('connect', () => {
             console.log('connected');
+
+            this.io.emit('login', { "username": "test", "password": "test" });
         });
     }
 
