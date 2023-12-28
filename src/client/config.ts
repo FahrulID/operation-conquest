@@ -22,7 +22,10 @@ var Config = (function (width: number, height: number) {
         },
         backgroundColor: '#000000',
         scene: Scenes,
-        plugins: Plugins
+        plugins: Plugins,
+        dom: {
+            createContainer: true
+        }
     };
 })
 

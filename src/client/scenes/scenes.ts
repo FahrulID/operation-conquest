@@ -1,5 +1,6 @@
 import Demo from './demo';
+import Auth from './auth';
 
-var Scenes = [Demo];
+var Scenes = [Auth];
 
 export default Scenes;

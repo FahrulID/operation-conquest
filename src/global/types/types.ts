@@ -7,4 +7,10 @@ type usernameCheck = {
     username: string
 }
 
-export { authentication, usernameCheck };
+type SocketResponse = {
+    success: boolean,
+    message: string,
+    data: any
+}
+
+export { authentication, usernameCheck, SocketResponse };

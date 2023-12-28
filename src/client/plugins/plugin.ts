@@ -1,4 +1,5 @@
 import { ConnectionPlugin } from "./connection";
+import { ToastPlugin } from "./toast";
 
 var Plugins = {
     global: [
@@ -6,6 +7,13 @@ var Plugins = {
             key: 'ConnectionPlugin',
             plugin: ConnectionPlugin,
             start: true,
+            mapping: 'connection'
+        },
+        {
+            key: 'ToastPlugin',
+            plugin: ToastPlugin,
+            start: true,
+            mapping: 'toast'
         }
     ]
 }

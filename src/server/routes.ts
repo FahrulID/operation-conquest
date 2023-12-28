@@ -24,11 +24,14 @@ class Routes {
                 console.info('hello');
             });
 
-            socket.on('login', async (data: authentication | usernameCheck) => {
-                // check username
-                let response = await this.authService.checkUsername(data);
+            socket.on('login', async (data: authentication, callback) => {
+                let response = await this.authService.login(data);
+                callback(response);
+            });
 
-                console.log(response);
+            socket.on('usernameCheck', async (data: usernameCheck, callback) => {
+                let response = await this.authService.checkUsername(data);
+                callback(response);
             });
         });
     }
