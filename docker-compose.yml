@@ -1,0 +1,45 @@
+services:
+
+  postgres:
+    image: postgres:16.3-alpine
+    restart: always
+    ports:
+      - ${DATABASE_PORT}:5432
+    volumes:
+      - conquest-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    networks:
+      - conquest-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - conquest-network
+
+  mailhog:
+    image: mailhog/mailhog
+    restart: always
+    ports:
+      - 8025:8025
+      - 1025:1025
+    networks:
+      - conquest-network
+
+volumes:
+  conquest-data:
+  pgadmin-data:
+
+
+networks:
+  conquest-network:
